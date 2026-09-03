@@ -6,10 +6,8 @@ books["The Fellowship of the Ring"] ="J.R.R. Tolkien"
 books["Harry Potter and the Sorcerer's Stone"] ="J.K. Rowling"
 books["Moby-Dick"] = "Herman Melville"
 
-
 authors: set[str] = set()
-for author in books.values():
-      authors.add(author)
+authors = set (books.values())
 
 print("Список всех книг:")
 for book in sorted(books):
