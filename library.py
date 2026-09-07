@@ -3,6 +3,7 @@ import sys
 ARGSV_COUNT = 3
 ACTION_COMMANDS = ["filter","sort"]
 SORT_TYPES = ["author","book"]
+SPLITTER = " — "
 
 BOOKS = {
 'A Game of Thrones': 'George R.R. Martin', 
@@ -34,12 +35,12 @@ books = dict(BOOKS)
 match action:
     case "filter":
         books_filtred = filter(lambda book: action_parm in book[0], books.items()) # type: ignore
-        books_out = list(map(lambda book: f"{book[0]} - {book[1]}", books_filtred)) # type: ignore
+        books_out = list(map(lambda book: f"{book[0]}{SPLITTER}{book[1]}", books_filtred)) # type: ignore
         print(books_out)
     case "sort":
-        books_list = list(map(lambda book: f"{book[0]} - {book[1]}", books.items())) # type: ignore
+        books_list = list(map(lambda book: f"{book[0]}{SPLITTER}{book[1]}", books.items())) # type: ignore
         colum_idx_sort = 1 if action_parm == "author" else 0    
-        books_out = sorted(books_list, key = lambda book: book.split("-")[colum_idx_sort]) # type: ignore
-        print(books_list)
+        books_out = sorted(books_list, key = lambda book: book.split(SPLITTER)[colum_idx_sort]) # type: ignore
+        print(books_out)
     case _:
         print("Ошибка в команде")
