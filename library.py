@@ -65,13 +65,7 @@ try:
     books = dict(BOOKS)
     filter_sort(books, action, action_parm)
 
-except ArgsCountError as e:
-    print(f"Ошибка ввода : {e}")
-except NotExistAction as e:
-    print(f"Ошибка команды : {e}")
-except EmptyFilterValue as e:
-    print(f"Ошибка фильтрации: {e}")
-except NotExistSortType as e:
-    print(f"Ошибка сортировки: {e}")
+except ActionEror as e:
+    print(f"Ошибка: {e}")
 finally:
     print("---Завершение работы программы---")
